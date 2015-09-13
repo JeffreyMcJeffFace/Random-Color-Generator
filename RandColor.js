@@ -10,11 +10,22 @@ $(document).ready(function () {
         newColor = getColor();
         oldColor = rgb2hex($("h1").css('backgroundColor'));
         oldColor = oldColor.toUpperCase();
-        //$("#colors").append("<li style='background-color:" + oldColor + "'>" + oldColor + "</li>");
-        $("li:nth-child(1)").after("<li style='background-color:"+oldColor+"'>" + oldColor + "</li>");
+        newli = $("li:nth-child(1)").after("<li class='newli' style='background-color:"+oldColor+"'>" + oldColor + "</li>");
         $("ul li h1").css("background-color", newColor);
         $("h1").text("Current Color: " + newColor);
+        $("body").css('background-color','white')
+
     });
+
+    $('ul').on('click', '.newli', function () {
+        oldColor = $(this).text();
+        $('body').css("backgroundColor", oldColor);
+        $("ul li h1").css("background-color", oldColor);
+        $("h1").text("Current Color: " + oldColor);
+    });
+
+
+
 
 });
 
